@@ -1,19 +1,16 @@
+"use client";
+import Carousel from "@/components/Carousel";
 import Greet from "@/components/Greet";
-import MainHinata from "@/components/MainHinata";
-import MainKavach from "@/components/MainKavach";
 import WeatherTime from "@/components/WeatherTime";
 
 export default function Home() {
   return (
-    <div className="p-24">
-      <div className="flex justify-between p-4">
+    <div className="p-[5.5rem] pb-0 pt-[3rem]">
+      <div className="flex justify-between p-4 pt-0">
         <Greet />
         <WeatherTime />
       </div>
-      <div className="flex space-x-2 mt-24">
-        <MainKavach />
-        <MainHinata />
-      </div>
+      <Carousel />
     </div>
   );
 }

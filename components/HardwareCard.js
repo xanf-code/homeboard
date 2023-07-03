@@ -8,10 +8,10 @@ function HardwareCard({
   metric,
 }) {
   return (
-    <div className="bg-black flex-1 p-4">
+    <div className="bg-black flex-1 py-4 pr-4">
       <div className="flex justify-between text-sm font-normal p-2">
-        <p>{title}</p>
-        <p>{desc}</p>
+        <p className="tracking-wider">{title}</p>
+        <p className="tracking-wider">{desc}</p>
       </div>
       <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden my-1">
         <div
@@ -26,7 +26,9 @@ function HardwareCard({
               value > threshold ? "bg-red-600" : "bg-green-500"
             } rounded-full mr-2`}
           />
-          <p>{value > threshold ? negative : positive}</p>
+          <p className="tracking-wider">
+            {value > threshold ? negative : positive}
+          </p>
         </div>
         <p className="text-gray-400">{value + metric}</p>
       </div>
