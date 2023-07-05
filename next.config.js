@@ -13,9 +13,11 @@ const nextConfig = {
     WEATHER_URL: process.env.WEATHER_URL,
     HINATA_URL: process.env.HINATA_URL,
     TAB_IP: process.env.TAB_IP,
+    SPEED_URL: process.env.SPEED_URL,
+    ISP_URL: process.env.ISP_URL,
   },
   images: {
-    domains: ["i.scdn.co"],
+    domains: ["i.scdn.co", "app.fing.com"],
   },
 };
 

@@ -1,4 +1,4 @@
-function ActivityBlinker({ status, logic }) {
+function ActivityBlinker({ status, logic, font }) {
   return (
     <div className="flex items-center">
       <div
@@ -6,11 +6,7 @@ function ActivityBlinker({ status, logic }) {
           status ? "bg-green-500 animate-pulse" : "bg-red-500"
         }`}
       ></div>
-      <p
-        className={`text-gray-400 ${
-          status ? "text-green-500" : "text-red-500"
-        }`}
-      >
+      <p className={`${font} ${status ? "text-green-500" : "text-red-500"}`}>
         {logic}
       </p>
     </div>

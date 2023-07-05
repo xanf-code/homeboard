@@ -2,6 +2,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import MainKavach from "./MainKavach";
 import MainHinata from "./MainHinata";
+import InternetMonitor from "./Internet/InternetMonitor";
 
 const Carousel = () => {
   const [activeComponent, setActiveComponent] = useState("div1");
@@ -107,8 +108,8 @@ const Carousel = () => {
         )}
         {activeComponent === "div2" && (
           <div className={div2Classes}>
-            <div className="flex space-x-4 mt-3 ml-1.5">
-              <p>Internet Details</p>
+            <div className="space-x-4 mt-3 ml-1.5">
+              <InternetMonitor />
             </div>
           </div>
         )}
