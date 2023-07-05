@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import SpeedSkeleton from "./SpeedSkeleton";
 import Image from "next/image";
 import ActivityBlinker from "../ActivityBlinker";
+import ISPSkeleton from "./ISPSkeleton";
 
 function ISPM() {
   const { data, isLoading, error, isRefetchError } = useQuery({
@@ -15,7 +15,7 @@ function ISPM() {
   });
 
   if (isLoading || error || isRefetchError) {
-    return <SpeedSkeleton />;
+    return <ISPSkeleton />;
   }
 
   const impactCal = (impact) => {
