@@ -66,9 +66,6 @@ function ISPM() {
               <span className="text-gray-300">{`(${data.severity})`}</span>
             </p>
             <div className="flex space-x-10">
-              <p className="text-lg tracking-wider">
-                Recent Report: {data.reportId}
-              </p>
               <ActivityBlinker
                 font={"text-lg"}
                 status={data.active}
@@ -94,7 +91,7 @@ function ISPM() {
                 </div>
                 <div className="ml-4">{`${data.impactPerc}%`}</div>
               </div>
-              <div className="mt-4 flex space-x-4">
+              <div className="mt-5 flex space-x-4">
                 <div className="text-xl font-bold ">Impacted Users:</div>
                 <div className="flex items-center">
                   <p className="text-2xl tracking-widest">
