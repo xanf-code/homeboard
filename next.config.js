@@ -12,6 +12,7 @@ const nextConfig = {
     KAVACH_URL: process.env.KAVACH_URL,
     WEATHER_URL: process.env.WEATHER_URL,
     HINATA_URL: process.env.HINATA_URL,
+    TAB_IP: process.env.TAB_IP,
   },
   images: {
     domains: ["i.scdn.co"],
