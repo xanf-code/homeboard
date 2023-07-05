@@ -5,8 +5,8 @@ export function middleware(request) {
     const sourceIpAddress = request.headers.get("x-forwarded-host");
     const forip = request.headers.get("x-forwarded-for");
     if (!allowedip.includes(sourceIpAddress)) {
-      console.log(sourceIpAddress);
-      console.log(forip);
+      console.log(`source ip: ${sourceIpAddress}`);
+      console.log(`for ip: ${forip}`);
       return new Response("Forbidden", { status: 403 });
     }
   }
