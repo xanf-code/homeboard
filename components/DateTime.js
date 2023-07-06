@@ -5,9 +5,11 @@ import { Ubuntu_Mono } from "next/font/google";
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
 const DateTime = () => {
-  const [currentDateTime, setCurrentDateTime] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [date, setdate] = useState("");
+  const [currentHour, setCurrentHour] = useState("");
+  const [currentMin, setcurrentMin] = useState("");
+  const [currentTime, setcurrentTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,13 +21,11 @@ const DateTime = () => {
       const hours = date.getHours();
       const minutes = date.getMinutes();
       const ampm = hours >= 12 ? "PM" : "AM";
-      const twelveHourFormat = hours % 12 || 12;
-      const formattedDateTime = `${twelveHourFormat}:${minutes
-        .toString()
-        .padStart(2, "0")} ${ampm}`;
 
       setdate(`${day}, ${month} ${dayNumber}`);
-      setCurrentDateTime(formattedDateTime);
+      setcurrentTime(ampm);
+      setCurrentHour(hours);
+      setcurrentMin(minutes);
       setIsLoading(false);
     }, 1000);
 
@@ -33,7 +33,7 @@ const DateTime = () => {
   }, []);
 
   return (
-    <div className="text-4xl flex space-x-5 items-center">
+    <div className="text-4xl flex items-center">
       {isLoading ? (
         <div>
           <div className="animate-pulse bg-gray-600 w-56 h-12 rounded-md"></div>
@@ -41,8 +41,9 @@ const DateTime = () => {
         </div>
       ) : (
         <div>
-          <p className="text-white font-semibold tracking-wide">
-            {currentDateTime}
+          <p className="text-white font-semibold">
+            {currentHour % 12 || 12} <span className="animate-pulse">:</span>{" "}
+            {currentMin.toString().padStart(2, "0")} {currentTime}
           </p>
           <p
             className={`text-2xl ${ubuntu.className} text-gray-300 tracking-wide pt-0.5`}

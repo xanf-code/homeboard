@@ -10,6 +10,7 @@ function InternetSpeed() {
     },
     refetchInterval: 5 * 60 * 60 * 1000,
     refetchIntervalInBackground: true,
+    refetchOnMount: false,
   });
 
   if (isLoading || error || isRefetchError) {

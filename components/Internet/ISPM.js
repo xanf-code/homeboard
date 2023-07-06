@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import ActivityBlinker from "../ActivityBlinker";
 import ISPSkeleton from "./ISPSkeleton";
+import { getTimeAgo } from "@/utils/timeago";
 
 function ISPM() {
   const { data, isLoading, error, isRefetchError } = useQuery({
@@ -12,6 +13,7 @@ function ISPM() {
     },
     refetchInterval: 5 * 60 * 60 * 1000,
     refetchIntervalInBackground: true,
+    refetchOnMount: false,
   });
 
   if (isLoading || error || isRefetchError) {
@@ -61,6 +63,9 @@ function ISPM() {
             blurDataURL="https://cdn.dribbble.com/users/1051393/screenshots/4318829/media/038dc85d07926b608ceedace6355a3bd.png?compress=1&resize=800x600&vertical=center"
           />
           <div className="flex flex-col space-y-4 pl-6 justify-center">
+            <p className="text-sm text-gray-300 tracking-wider">
+              {getTimeAgo(data.startTime)}
+            </p>
             <p className="text-3xl tracking-wider">
               {`${data.mainDimensionIspValue} event in ${data.down_at}`}{" "}
               <span className="text-gray-300">{`(${data.severity})`}</span>
@@ -85,7 +90,7 @@ function ISPM() {
               <div className="flex items-center mt-2 ">
                 <div className="w-full h-6 bg-gray-800 rounded-md">
                   <div
-                    className="h-full bg-gradient-to-r from-green-400 to-blue-500 rounded"
+                    className="h-full bg-gradient-to-r from-[#F0C27B] to-[#4B1248] rounded"
                     style={{ width: `${data.impactPerc}%` }}
                   ></div>
                 </div>

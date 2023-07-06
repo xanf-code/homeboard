@@ -27,7 +27,7 @@ function ISPSkeleton() {
           </div>
           <div className="flex items-center mt-2">
             <div className="w-full h-6 bg-gray-800 rounded-md">
-              <div className="h-full bg-gradient-to-r from-green-400 to-blue-500 rounded"></div>
+              <div className="h-full bg-gradient-to-r from-[#F0C27B] to-[#4B1248] rounded"></div>
             </div>
             <div className="ml-4">
               <span className="bg-gray-200 w-10 h-6 inline-block"></span>

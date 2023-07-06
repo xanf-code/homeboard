@@ -7,6 +7,7 @@ import { getTimeAgo } from "@/utils/timeago";
 import KavHinaSkeleton from "./Skeletons/KavHinaSkeleton";
 import { Ubuntu_Mono } from "next/font/google";
 import React, { useState, useEffect } from "react";
+import { hinatafetch } from "@/network/fetchstore";
 
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
@@ -14,12 +15,10 @@ export default function MainHinata() {
   const [currentTimeAgo, setCurrentTimeAgo] = useState("");
   const { data, isLoading, error, isRefetchError } = useQuery({
     queryKey: ["hinatadata"],
-    queryFn: async () => {
-      const res = await fetch(process.env.HINATA_URL);
-      return await res.json();
-    },
+    queryFn: hinatafetch,
     refetchInterval: 10 * 60 * 1000,
     refetchIntervalInBackground: true,
+    refetchOnMount: false,
   });
 
   useEffect(() => {

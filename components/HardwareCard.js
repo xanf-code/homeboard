@@ -15,7 +15,7 @@ function HardwareCard({
       </div>
       <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden my-1">
         <div
-          className="h-full bg-gradient-to-r from-green-300 to-red-700"
+          className="h-full bg-gradient-to-r from-[#F0C27B] to-[#4B1248]"
           style={{ width: `${value}%` }}
         ></div>
       </div>

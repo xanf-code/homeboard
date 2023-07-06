@@ -7,6 +7,7 @@ import { getTimeAgo } from "@/utils/timeago";
 import KavHinaSkeleton from "./Skeletons/KavHinaSkeleton";
 import { Ubuntu_Mono } from "next/font/google";
 import React, { useState, useEffect } from "react";
+import { kavachfetch } from "@/network/fetchstore";
 
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
@@ -14,12 +15,10 @@ export default function MainKavach() {
   const [currentTimeAgo, setCurrentTimeAgo] = useState("");
   const { data, isLoading, error, isRefetchError } = useQuery({
     queryKey: ["kavachdata"],
-    queryFn: async () => {
-      const res = await fetch(process.env.KAVACH_URL);
-      return await res.json();
-    },
+    queryFn: kavachfetch,
     refetchInterval: 10 * 60 * 1000,
     refetchIntervalInBackground: true,
+    refetchOnMount: false,
   });
 
   useEffect(() => {
