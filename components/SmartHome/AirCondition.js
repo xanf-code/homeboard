@@ -242,11 +242,11 @@ function AirCondition() {
         <div className="flex flex-col justify-between items-start">
           <p className="text-gray-400 text-sm font-bold">
             Humidity:
-            <span className="text-white">{" " + data.ac_data.humidity}</span>
+            <span className="text-white">{" " + data.ac_data.humidity} %</span>
           </p>
           <p className="text-gray-400 text-sm font-bold">
             CO2:
-            <span className="text-white">{" " + data.ac_data.co2}</span>
+            <span className="text-white">{" " + data.ac_data.co2} ppm</span>
           </p>
           <p className="text-gray-400 text-sm font-bold">
             IAQ:
@@ -254,7 +254,7 @@ function AirCondition() {
           </p>
           <p className="text-gray-400 text-sm font-bold">
             TVOC:
-            <span className="text-white">{" " + data.ac_data.tvoc}</span>
+            <span className="text-white">{" " + data.ac_data.tvoc} ppb</span>
           </p>
         </div>
       </div>
