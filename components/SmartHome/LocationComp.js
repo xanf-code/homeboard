@@ -16,20 +16,20 @@ function LocationComp() {
   }
 
   function extractFloatFromString(str) {
-    const regex = /[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?/; // Matches floating-point numbers
+    const regex = /[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?/;
 
     const match = str.match(regex);
     if (match) {
       const value = parseFloat(match[0]);
       return value;
     } else {
-      return null; // Or you can choose to return a default value or throw an error
+      return null;
     }
   }
 
   return (
     <div className="flex flex-col space-y-4 pt-12 mt-1">
-      <div className="px-8 py-4 h-full flex flex-col justify-center bg-gray-900 rounded-lg w-full space-y-6">
+      <div className="px-6 h-full flex flex-col justify-center bg-gray-900 rounded-lg w-full space-y-6">
         <h2 className="text-lg font-bold text-white ml-2">👩‍🦰 Amma</h2>
         <p className="mt-2 text-3xl text-white">
           📍{extractFloatFromString(data.bhanu.distance)} Km
@@ -37,7 +37,7 @@ function LocationComp() {
         <div className="flex items-center space-x-4">
           {data.bhanu.movement_type == "stopped" ? (
             <svg
-              className="animate-pulse ml-2"
+              className="animate-pulse"
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
@@ -48,7 +48,7 @@ function LocationComp() {
             </svg>
           ) : (
             <svg
-              className="animate-pulse ml-2"
+              className="animate-pulse"
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
@@ -63,7 +63,7 @@ function LocationComp() {
           </p>
         </div>
       </div>
-      <div className="px-8 py-4 h-full flex flex-col justify-center bg-gray-900 rounded-lg w-full space-y-6">
+      <div className="px-6 h-full flex flex-col justify-center bg-gray-900 rounded-lg w-full space-y-6">
         <h2 className="text-lg font-bold text-white ml-2">🧔‍♂️ Appa</h2>
         <p className="mt-2 text-3xl text-white">
           📍{extractFloatFromString(data.aswathappa.distance)} Km
@@ -71,7 +71,7 @@ function LocationComp() {
         <div className="flex items-center space-x-4">
           {data.aswathappa.movement_type == "stopped" ? (
             <svg
-              className="animate-pulse ml-2"
+              className="animate-pulse"
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
@@ -82,7 +82,7 @@ function LocationComp() {
             </svg>
           ) : (
             <svg
-              className="animate-pulse ml-2"
+              className="animate-pulse"
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
