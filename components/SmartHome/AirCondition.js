@@ -2,6 +2,8 @@
 import { kavachfetch } from "@/network/fetchstore";
 import { useQuery } from "@tanstack/react-query";
 import ACSkeleton from "./ACSkeleton";
+import Gauge from "./Gauge";
+import BoxWidget from "./Boxwidget";
 
 function AirCondition() {
   const { data, isLoading, error, isRefetchError } = useQuery({
@@ -229,71 +231,89 @@ function AirCondition() {
   };
 
   return (
-    <div className="flex-grow flex flex-col items-center space-y-6">
-      <p className="text-3xl font-semibold pb-4">AC and Door Monitor</p>
+    <div className="flex flex-col space-y-6">
+      <h1 className="text-2xl font-bold tracking-wider">Smart Monitor ⚡️🖥️</h1>
       <div
-        className={`bg-gray-900 rounded-lg p-8 text-center ring-4 ${
+        className={`flex justify-around bg-gray-900 rounded-lg p-8 mt-8 text-center ring-4 ${
           data.ac_data.temperature < 22 ? "ring-blue-700" : "ring-red-700"
         }`}
       >
-        <p className="text-6xl font-bold text-white">
-          {data.ac_data.temperature}°C
-        </p>
+        <Gauge temperature={data.ac_data.temperature} />
+        <div className="flex flex-col justify-between items-start">
+          <p className="text-gray-400 text-sm font-bold">
+            Humidity:
+            <span className="text-white">{" " + data.ac_data.humidity}</span>
+          </p>
+          <p className="text-gray-400 text-sm font-bold">
+            CO2:
+            <span className="text-white">{" " + data.ac_data.co2}</span>
+          </p>
+          <p className="text-gray-400 text-sm font-bold">
+            IAQ:
+            <span className="text-white">{" " + data.ac_data.iaq}</span>
+          </p>
+          <p className="text-gray-400 text-sm font-bold">
+            TVOC:
+            <span className="text-white">{" " + data.ac_data.tvoc}</span>
+          </p>
+        </div>
       </div>
       <div className="flex space-x-4">
         <div
           className={`${
             data.ac_data.on ? "bg-white" : "bg-gray-900"
-          } rounded-lg p-4 px-8`}
+          } rounded-lg p-4 px-8 flex-1 `}
         >
-          {data.ac_data.on ? (
-            <svg
-              width={40}
-              height={40}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z"
-                  fill="#000000"
-                ></path>
-              </g>
-            </svg>
-          ) : (
-            <svg
-              width={40}
-              height={40}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                {" "}
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z"
-                  fill="#ffffff"
-                ></path>{" "}
-              </g>
-            </svg>
-          )}
+          <div className="flex justify-center mb-2">
+            {data.ac_data.on ? (
+              <svg
+                width={40}
+                height={40}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z"
+                    fill="#000000"
+                  ></path>
+                </g>
+              </svg>
+            ) : (
+              <svg
+                width={40}
+                height={40}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z"
+                    fill="#ffffff"
+                  ></path>{" "}
+                </g>
+              </svg>
+            )}
+          </div>
           <p
             className={`${
               data.ac_data.on ? "text-black" : "text-white"
@@ -302,33 +322,89 @@ function AirCondition() {
             {data.ac_data.on ? "ON" : "OFF"}
           </p>
         </div>
-        <div className="bg-gray-900 rounded-lg p-4 px-8">
-          <div>{mode(data.ac_data.mode)}</div>
+        <div className="bg-gray-900 rounded-lg p-4 px-8 flex-1">
+          <div className="flex justify-center mb-2">
+            {mode(data.ac_data.mode)}
+          </div>
           <p className="text-center mt-1 text-sm">{data.ac_data.mode}</p>
         </div>
-        <div className="bg-gray-900 rounded-lg p-4 px-8">
-          <div>{fan(data.ac_data.fan)}</div>
+        <div className="bg-gray-900 rounded-lg p-4 px-8 flex-1">
+          <div className="flex justify-center mb-2">
+            {fan(data.ac_data.fan)}
+          </div>
           <p className="text-center mt-1 text-sm">{data.ac_data.fan}</p>
         </div>
       </div>
-      <div className="bg-gray-900 rounded-lg p-4 px-8">
-        <p className="text-center text-gray-300 font-light text-lg">
-          💡 AC State changed {Number(data.ac_data.last_toggle / 60).toFixed(0)}{" "}
-          min ago.
-        </p>
-      </div>
-      <div className="bg-gray-900 rounded-lg p-4">
-        <div className="flex p-2 space-x-4 items-center justify-center px-4">
-          <p className="font-bold text-base">🚪 Door status:</p>
-          <div className="relative inline-block w-10 h-6 rounded-full bg-gray-600">
-            <input
-              readOnly
-              type="checkbox"
-              className="absolute top-0 left-0 w-6 h-6 rounded-full appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-300 focus:ring-green-500 checked:bg-green-500 checked:right-0 checked:translate-x-full transition-transform duration-300 ease-in"
-              checked={data.door_status.state == 0 ? true : false}
-            />
-          </div>
-        </div>
+      <div className="space-x-4 flex">
+        <BoxWidget
+          title="💡 AC State"
+          value={
+            <div className="flex items-center space-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#ffffff"
+                viewBox="0 0 256 256"
+              >
+                <path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"></path>
+              </svg>
+              <p>
+                {Number(data.ac_data.last_toggle / 60 / 60).toFixed(1)} hours
+              </p>
+            </div>
+          }
+          description="State of the last AC change time elapsed."
+        />
+        <BoxWidget
+          title="🚪 Door status"
+          value={
+            data.door_status.state == 0 ? (
+              <div className="flex space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                >
+                  <path d="M160,16A80.07,80.07,0,0,0,83.91,120.78L26.34,178.34A8,8,0,0,0,24,184v40a8,8,0,0,0,8,8H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A80,80,0,1,0,160,16Zm0,144a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A64,64,0,1,1,160,160Zm32-84a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                >
+                  <path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path>
+                </svg>
+              </div>
+            ) : (
+              <div className="flex space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                >
+                  <path d="M160,16A80.07,80.07,0,0,0,83.91,120.78L26.34,178.34A8,8,0,0,0,24,184v40a8,8,0,0,0,8,8H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A80,80,0,1,0,160,16Zm0,144a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A64,64,0,1,1,160,160Zm32-84a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                >
+                  <path d="M208,80H96V56a32,32,0,0,1,32-32c15.37,0,29.2,11,32.16,25.59a8,8,0,0,0,15.68-3.18C171.32,24.15,151.2,8,128,8A48.05,48.05,0,0,0,80,56V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80Zm0,128H48V96H208V208Zm-80-96a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Z"></path>
+                </svg>
+              </div>
+            )
+          }
+          description="Door status open/close for room door."
+        />
       </div>
     </div>
   );

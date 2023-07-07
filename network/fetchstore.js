@@ -7,3 +7,7 @@ export const kavachfetch = async () => {
   const res = await fetch(process.env.KAVACH_URL);
   return await res.json();
 };
+export const locationFetch = async () => {
+  const res = await fetch(process.env.LOCATION_URL);
+  return await res.json();
+};

@@ -3,8 +3,8 @@ import classNames from "classnames";
 import MainKavach from "./MainKavach";
 import MainHinata from "./MainHinata";
 import InternetMonitor from "./Internet/InternetMonitor";
-import LocationMonitor from "./SmartHome/LocationMonitor";
 import AirCondition from "./SmartHome/AirCondition";
+import LocationComp from "./SmartHome/LocationComp";
 import Pihole from "./SmartHome/Pihole";
 
 const Carousel = () => {
@@ -118,9 +118,9 @@ const Carousel = () => {
         )}
         {activeComponent === "div3" && (
           <div className={div3Classes}>
-            <div className="flex space-x-4 mt-3 ml-1.5 p-3">
+            <div className="flex space-x-4 mt-3 ml-1.5 pt-3 p-4">
               <AirCondition />
-              <LocationMonitor />
+              <LocationComp />
               <Pihole />
             </div>
           </div>

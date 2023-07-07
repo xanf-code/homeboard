@@ -15,6 +15,7 @@ const nextConfig = {
     TAB_IP: process.env.TAB_IP,
     SPEED_URL: process.env.SPEED_URL,
     ISP_URL: process.env.ISP_URL,
+    LOCATION_URL: process.env.LOCATION_URL,
   },
   images: {
     domains: ["i.scdn.co", "app.fing.com"],
