@@ -1,6 +1,7 @@
 "use client";
 import { kavachfetch } from "@/network/fetchstore";
 import { useQuery } from "@tanstack/react-query";
+import LocationComp from "./LocationComp";
 
 function Pihole() {
   const { data, isLoading, error, isRefetchError } = useQuery({
@@ -142,8 +143,41 @@ function Pihole() {
           </div>
         </div>
       </div>
-      <div className="w-full h-full bg-gray-900 mt-4">div-1</div>
-      <div className="w-full h-full bg-gray-900 mt-4">div-2</div>
+      <div className="w-full bg-gray-900 mt-4 space-y-2 p-4">
+        <div className="flex items-center space-x-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="#17a349"
+            viewBox="0 0 256 256"
+          >
+            <path d="M208,40H48A16,16,0,0,0,32,56v58.77c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm-34.34,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32Z"></path>
+          </svg>
+          <p className="text-lg text-green-600">
+            Top Permitted Domain:{" "}
+            <span className="ml-1 text-white">
+              {data.pie_raw_data.top_query}
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="#f50000"
+            viewBox="0 0 256 256"
+          >
+            <path d="M208,40H48A16,16,0,0,0,32,56v58.77c0,89.62,75.82,119.34,91,124.38a15.44,15.44,0,0,0,10,0c15.2-5.05,91-34.77,91-124.39V56A16,16,0,0,0,208,40ZM120,96a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>
+          </svg>
+          <p className="text-lg text-red-600">
+            Top Blocked Domain:{" "}
+            <span className="ml-1 text-white">{data.pie_raw_data.top_ad}</span>
+          </p>
+        </div>
+      </div>
+      <LocationComp />
     </div>
   );
 }
