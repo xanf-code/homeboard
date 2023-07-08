@@ -113,8 +113,8 @@ function Pihole() {
           </div>
           <div className="flex flex-row justify-around pt-4">
             <div className="flex flex-col bg-gray-900 rounded-lg w-full">
-              <div className="p-6 flex">
-                <div className="flex">
+              <div className="p-6">
+                <div className="flex justify-between">
                   <div className="flex flex-col">
                     <p className="bg-teal-200 text-teal-800 text-xl px-2 rounded-md uppercase font-semibold tracking-wide">
                       Total Clients
