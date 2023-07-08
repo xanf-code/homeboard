@@ -29,7 +29,13 @@ function LocationComp() {
 
   return (
     <div className="flex mt-4 h-full space-x-4">
-      <div className="flex bg-gray-900 rounded-md p-4 items-center">
+      <div
+        className={`flex bg-gray-900 rounded-md p-4 items-center ring-2 ${
+          data.bhanu.movement_type == "stopped"
+            ? "ring-blue-700"
+            : "ring-red-700 animate-pulse"
+        }`}
+      >
         <p className="font-bold text-white mr-1">{`👩‍🦰 Amma is 📍 ${extractFloatFromString(
           data.bhanu.distance
         )} Km away at ${data.bhanu.address
@@ -37,7 +43,13 @@ function LocationComp() {
           .trim()
           .slice(0, 10)}.`}</p>
       </div>
-      <div className="flex bg-gray-900 rounded-md p-4 items-center">
+      <div
+        className={`flex bg-gray-900 rounded-md p-4 items-center ring-2 ${
+          data.aswathappa.movement_type == "stopped"
+            ? "ring-blue-700"
+            : "ring-red-700 animate-pulse"
+        }`}
+      >
         <p className="font-bold text-white mr-1">{`🧔‍♂️ Appa is 📍 ${extractFloatFromString(
           data.aswathappa.distance
         )} Km away at ${data.aswathappa.address

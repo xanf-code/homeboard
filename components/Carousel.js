@@ -120,7 +120,6 @@ const Carousel = () => {
           <div className={div3Classes}>
             <div className="flex space-x-4 mt-3 ml-1.5 pt-3 p-4">
               <AirCondition />
-              {/* <LocationComp /> */}
               <Pihole />
             </div>
           </div>

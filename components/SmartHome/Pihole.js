@@ -18,7 +18,7 @@ function Pihole() {
   return (
     <div className="flex flex-col">
       <div className="flex space-x-4">
-        <div>
+        <div className="w-full">
           <div className="flex flex-row justify-around pt-14">
             <div className="flex flex-col bg-gray-900 rounded-lg w-full">
               <div className="p-6">
@@ -80,7 +80,7 @@ function Pihole() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="w-full">
           <div className="flex flex-row justify-around pt-14">
             <div className="flex flex-col bg-gray-900 rounded-lg w-full">
               <div className="p-6">
