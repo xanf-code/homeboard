@@ -90,7 +90,7 @@ function Pihole() {
                       Blocked in %
                     </p>
                     <p className="mt-4 font-semibold text-4xl leading-wide truncate">
-                      {data.pie_raw_data.ads_percentage_today}
+                      {data.pie_raw_data.ads_percentage_today}%
                     </p>
                   </div>
                   <svg
