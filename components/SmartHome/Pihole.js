@@ -2,6 +2,7 @@
 import { kavachfetch } from "@/network/fetchstore";
 import { useQuery } from "@tanstack/react-query";
 import LocationComp from "./LocationComp";
+import PiSkeleton from "./PiSkeleton";
 
 function Pihole() {
   const { data, isLoading, error, isRefetchError } = useQuery({
@@ -13,7 +14,7 @@ function Pihole() {
   });
 
   if (isLoading || error || isRefetchError) {
-    return <p>Fetching..</p>;
+    return <PiSkeleton />;
   }
   return (
     <div className="flex flex-col">
